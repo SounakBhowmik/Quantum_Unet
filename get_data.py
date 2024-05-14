@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 
 
 
-annotations_file_path = "oxford-iiit-pet/annotations/trimaps/"
-images_file_path = "oxford-iiit-pet/images/"
+annotations_file_path = "../Datasets/oxford-iiit-pet/annotations/trimaps/"
+images_file_path = "../Datasets/oxford-iiit-pet/images/"
 
 data_set_size = 200
 im_size = (100, 100)
@@ -35,14 +35,12 @@ def get_data(images_file_path=images_file_path, annotations_file_path = annotati
     
     images = np.array(images)
     g_truths = np.array(g_truths)
-    g_truths[g_truths != 1] = 0
+    g_truths[g_truths == 2] = 0
+    g_truths[g_truths == 3] = 0.5
     return images, g_truths
 
-def visualize(x):
-    '''
-        x: (n_channels, height, width) expected to be torch tensors
-    '''
-    plt.imshow(np.array(x.detach()).transpose(1,2,0))
+
+    
 
 
 
