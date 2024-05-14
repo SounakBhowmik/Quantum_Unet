@@ -9,7 +9,7 @@ Created on Mon May 13 23:52:59 2024
 from get_data import get_data
 from Utils import standardize_data, visualize
 from training_script import train_model
-from unet_model import UNet
+from unet_model import UNet, QUNet
 
 import torch
 import torch.nn as nn
@@ -38,7 +38,7 @@ train_loader = DataLoader(train_dataset, batch_size=10, shuffle=True)
 val_loader = DataLoader(val_dataset, batch_size=10, shuffle=False)
 
 # Initialize the model
-model = UNet(3,1)
+model = QUNet(1,1)
 
 # Define the loss function and optimizer
 criterion = nn.MSELoss()
