@@ -7,6 +7,7 @@ Created on Tue May 14 17:47:11 2024
 import torch
 
 def train_model(model, train_loader, val_loader, criterion, optimizer, num_epochs=100):
+    val_losses = []
     model.train()  # Set model to training mode
     for epoch in range(num_epochs):
         running_loss = 0.0
@@ -34,4 +35,6 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, num_epoch
                 val_loss += loss.item() * inputs.size(0)
         # Calculate and print the validation loss
         epoch_val_loss = val_loss / len(val_loader.dataset)
+        val_losses.append(epoch_val_loss)
         print(f'Epoch {epoch + 1}/{num_epochs}, Validation Loss: {epoch_val_loss:.4f}')
+    return val_losses
