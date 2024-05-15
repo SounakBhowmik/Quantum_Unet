@@ -45,10 +45,10 @@ criterion = nn.MSELoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # Define number of epochs
-num_epochs = 1
+num_epochs = 100
 
 # Run the training function
-train_model(model, train_loader, val_loader, criterion, optimizer, num_epochs)
+val_losses = train_model(model, train_loader, val_loader, criterion, optimizer, num_epochs)
 
 #%% Visualize the results and original image
 visualize(model(X_val[20:21])[0])
