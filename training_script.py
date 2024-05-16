@@ -37,4 +37,4 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, num_epoch
         epoch_val_loss = val_loss / len(val_loader.dataset)
         val_losses.append(epoch_val_loss)
         print(f'Epoch {epoch + 1}/{num_epochs}, Validation Loss: {epoch_val_loss:.4f}')
-    return val_losses
+    return val_losses, model
