@@ -9,7 +9,7 @@ Created on Mon May 13 23:52:59 2024
 from get_data import get_data
 from Utils import standardize_data, visualize
 from training_script import train_model
-from unet_model import UNet, QUNet
+from unet_model import UNet, QUNet, QUNet_AE
 
 import torch
 import torch.nn as nn
@@ -36,9 +36,9 @@ val_dataset = TensorDataset(X_val, y_val)
 # Create DataLoaders for both datasets
 train_loader = DataLoader(train_dataset, batch_size=10, shuffle=True)
 val_loader = DataLoader(val_dataset, batch_size=10, shuffle=False)
-
+#%%
 # Initialize the model
-model = QUNet(1,1)
+model = QUNet_AE(1,1)
 
 # Define the loss function and optimizer
 criterion = nn.MSELoss()
@@ -53,6 +53,3 @@ val_losses = train_model(model, train_loader, val_loader, criterion, optimizer, 
 #%% Visualize the results and original image
 visualize(model(X_val[20:21])[0])
 visualize(X_val[20])
-
-
-
